@@ -17,49 +17,20 @@ public class QuickSort {
     public static void main(String[] args) {
         QuickSort sort = new QuickSort();
         int[] array = {5, 3, 2, 4, 1};
-        System.out.println(Arrays.toString(sort.quickSort(array)));
+        sort.quickSort(array, 0, array.length - 1);
     }
 
-//    public int[] quickSort(int[] array) {
-    public int[] quickSort(int[] array) {
-        if (array.length < 2) {
-            return array;
+    public void quickSort(int[] array, int start, int end) {
+        int pivot = array[start];
+        int i = start;
+        int j = end;
+        while (start < end) {
+
+            while (i < end && pivot > array[start]) start++;
+            while (j > start && pivot < array[end]) end--;
+
+            System.out.println(start);
+            System.out.println(end);
         }
-
-        if (array.length == 2) {
-            if (array[0] > array[1]) {
-                int tmp = array[0];
-                array[0] = array[1];
-                array[1] = tmp;
-            }
-            return array;
-        }
-
-        int left = array[0];
-        int lowIndex = 1;
-        int highIndex = array.length - 1;
-        while (lowIndex <= highIndex) {
-            for (int i = lowIndex; i <= highIndex; i++) {
-                if (array[i] > left) {
-                    lowIndex = i;
-                    break;
-                }
-            }
-
-            for (int j = highIndex; j >= lowIndex; j--) {
-                if (array[j] < left) {
-                    highIndex = j;
-                    break;
-                }
-            }
-            int tmp = array[lowIndex];
-            array[lowIndex] = array[highIndex];
-            array[highIndex] = tmp;
-            System.out.println(lowIndex);
-            System.out.println(highIndex);
-        }
-
-        return array;
     }
-
 }
